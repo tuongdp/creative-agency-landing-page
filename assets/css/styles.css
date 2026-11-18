@@ -101,17 +101,14 @@ button {
     z-index: 1;
 }
 
-.header__inner {
+.navbar {
     display: flex;
     align-items: center;
     padding: 13px 0;
 }
 
-.header__nav {
-    margin-left: auto;
-}
-
 .header__nav-list {
+    margin-left: auto;
     display: flex;
 }
 
@@ -195,6 +192,7 @@ button {
 .hero__actions {
     margin-top: 42px;
     display: flex;
+    align-items: center;
     gap: 36px;
 }
 
@@ -213,41 +211,63 @@ button {
     line-height: 1.67; /* 166.667% */
 }
 
-.hero__gallery {
-    display: flex;
-    gap: 20px;
+.hero__visual {
     position: relative;
 }
 
-.hero__item--center {
-    margin-top: 77px;
+.hero__blur {
+    display: inline-block;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(137px);
+    background: #4dbb9a;
+    position: absolute;
+    z-index: -1;
+    left: 156px;
+    top: 122px;
+}
+
+.hero__gallery {
+    display: flex;
+    column-gap: 20px;
+    align-items: flex-start;
 }
 
 .hero__image {
     display: block;
 }
 
+.hero__gallery picture:nth-child(2) {
+    margin-top: 77px;
+}
+
 .hero__decoration {
     position: absolute;
-    width: 545px;
-    height: 361.174px;
-}
-
-.hero__decoration--top {
-    left: -172px;
     top: -32.07px;
+    left: -172px;
 }
 
-.hero__decoration--bottom {
-    transform: rotate(175.95deg);
+.hero__decoration--opposite {
+    transform: rotate(-175.95deg);
+    top: initial;
+    left: initial;
     bottom: -87.69px;
     right: 45.64px;
 }
 
+.hero__line {
+    position: absolute;
+    width: 545px;
+    height: 361.17px;
+}
+
 .hero__flower {
     position: absolute;
-    left: -42px;
+    width: 72.03px;
+    height: 72px;
     top: 7.68px;
+    left: -42.39px;
 }
 
 /* Partners */
@@ -266,6 +286,8 @@ button {
 
 .partners__logo {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .partners__item--featured {
@@ -325,14 +347,16 @@ button {
 
 .services__list {
     margin-top: 76px;
-    display: grid;
-    grid-template-columns: repeat(3, 370px);
+}
+
+.services__track {
+    display: flex;
     column-gap: 16px;
+    flex-wrap: nowrap;
 }
 
 .services__item {
     border-radius: 20px;
-    overflow: hidden;
     transition: 0.25s;
 }
 
@@ -372,6 +396,10 @@ button {
     font-weight: 500;
     line-height: 1.71429; /* 171.429% */
     width: 268px;
+}
+
+.services__list-navigation {
+    display: none;
 }
 
 /* About */

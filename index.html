@@ -11,6 +11,9 @@
         <!-- Styles CSS -->
         <link rel="stylesheet" href="./assets/css/styles.css" />
 
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="./assets/css/responsive.css" />
+
         <!-- Embed fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,45 +101,35 @@
         <meta name="theme-color" content="#ffffff" />
     </head>
     <body>
-        <!-- Header -->
-        <header class="header">
+        <!-- PC header -->
+        <header class="fixed-header">
             <div class="container">
-                <div class="header__inner">
+                <nav class="navbar">
                     <!-- Logo -->
-                    <a href="/" class="header__logo"
-                        ><img src="./assets/img/logo.svg" alt=""
-                    /></a>
+                    <a href="/" class="header__logo">
+                        <img src="./assets/img/logo.svg" alt="" />
+                    </a>
 
                     <!-- Navigation -->
-                    <nav class="header__nav" aria-label="Main navigation">
-                        <ul class="header__nav-list">
-                            <li
-                                class="header__nav-item header__nav-item--active"
+                    <ul id="pc-nav" class="header__nav-list">
+                        <li class="header__nav-item header__nav-item--active">
+                            <a href="/" class="header__nav-link active">Home</a>
+                        </li>
+
+                        <li class="header__nav-item">
+                            <a href="#about" class="header__nav-link">About</a>
+                        </li>
+
+                        <li class="header__nav-item">
+                            <a href="#blog" class="header__nav-link">Blog</a>
+                        </li>
+
+                        <li class="header__nav-item">
+                            <a href="#contact" class="header__nav-link"
+                                >Contact</a
                             >
-                                <a href="/" class="header__nav-link active"
-                                    >Home</a
-                                >
-                            </li>
-
-                            <li class="header__nav-item">
-                                <a href="#about" class="header__nav-link"
-                                    >About</a
-                                >
-                            </li>
-
-                            <li class="header__nav-item">
-                                <a href="#blog" class="header__nav-link"
-                                    >Blog</a
-                                >
-                            </li>
-
-                            <li class="header__nav-item">
-                                <a href="#contact" class="header__nav-link"
-                                    >Contact</a
-                                >
-                            </li>
-                        </ul>
-                    </nav>
+                        </li>
+                    </ul>
 
                     <!-- Action -->
                     <div class="header__action">
@@ -144,8 +137,51 @@
                             Sign Up
                         </a>
                     </div>
-                </div>
+                    <!-- Table/mobile menu -->
+                    <label for="menu-checkbox" class="toggle-menu">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"
+                            />
+                        </svg>
+                    </label>
+                </nav>
                 <div class="header__separate"></div>
+            </div>
+        </header>
+
+        <!-- Tablet/mobile header -->
+        <header class="mobile-header">
+            <input
+                type="checkbox"
+                hidden
+                id="menu-checkbox"
+                class="menu-checkbox"
+            />
+
+            <!-- Overlay -->
+            <label for="menu-checkbox" class="menu-overlay"></label>
+
+            <!-- Menu content -->
+            <div class="menu-drawer">
+                <!-- Logo -->
+                <a href="#">
+                    <img src="./assets/img/logo.svg" alt="Besnik." />
+                </a>
+
+                <!-- Navigation -->
+                <ul id="mobile-nav"></ul>
+                <script>
+                    const pcNav = document.querySelector("#pc-nav");
+                    const mobileNav = document.querySelector("#mobile-nav");
+
+                    // Copy from PC nav --> Mobile nav
+                    mobileNav.innerHTML = pcNav.innerHTML;
+                </script>
             </div>
         </header>
 
@@ -185,10 +221,45 @@
                             </div>
                         </div>
 
-                        <!-- Hero Gallery -->
-                        <div class="hero__gallery">
-                            <!-- Top Decoration -->
-                            <div class="hero__decoration hero__decoration--top">
+                        <!-- Hero Visual -->
+                        <div class="hero__visual">
+                            <div class="hero__blur"></div>
+                            <figure class="hero__gallery">
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="./assets/img/mobile-hero-01.svg"
+                                    />
+                                    <img
+                                        src="./assets/img/hero-01.svg"
+                                        alt="Creative design project"
+                                        class="hero__image"
+                                    />
+                                </picture>
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="./assets/img/mobile-hero-02.svg"
+                                    />
+                                    <img
+                                        src="./assets/img/hero-02.svg"
+                                        alt="Creative design project"
+                                        class="hero__image"
+                                    />
+                                </picture>
+                                <picture>
+                                    <source
+                                        media="(max-width: 767px)"
+                                        srcset="./assets/img/mobile-hero-03.svg"
+                                    />
+                                    <img
+                                        src="./assets/img/hero-03.svg"
+                                        alt="Creative design project"
+                                        class="hero__image"
+                                    />
+                                </picture>
+                            </figure>
+                            <div class="hero__decoration">
                                 <img
                                     src="./assets/img/hero-line.svg"
                                     alt=""
@@ -201,37 +272,8 @@
                                     class="hero__flower"
                                 />
                             </div>
-
-                            <!-- Image 1 -->
-                            <figure class="hero__item hero__item--left">
-                                <img
-                                    src="./assets/img/hero-01.svg"
-                                    alt="Creative design project"
-                                    class="hero__image"
-                                />
-                            </figure>
-
-                            <!-- Image 2 -->
-                            <figure class="hero__item hero__item--center">
-                                <img
-                                    src="./assets/img/hero-02.svg"
-                                    alt="Creative design project"
-                                    class="hero__image"
-                                />
-                            </figure>
-
-                            <!-- Image 3 -->
-                            <figure class="hero__item hero__item--right">
-                                <img
-                                    src="./assets/img/hero-03.svg"
-                                    alt="Creative design project"
-                                    class="hero__image"
-                                />
-                            </figure>
-
-                            <!-- Bottom Decoration -->
                             <div
-                                class="hero__decoration hero__decoration--bottom"
+                                class="hero__decoration hero__decoration--opposite"
                             >
                                 <img
                                     src="./assets/img/hero-line.svg"
@@ -364,66 +406,115 @@
                     </div>
                     <!-- Service List -->
                     <div class="services__list">
-                        <!-- Service 1 -->
-                        <article class="services__item">
-                            <a href="#service-1" class="services__link">
-                                <img
-                                    src="./assets/img/service-01.png"
-                                    alt="Website Design"
-                                    class="services__image"
-                                />
-                            </a>
+                        <div class="services__track">
+                            <!-- Service 1 -->
+                            <article class="services__item">
+                                <a href="#service-1" class="services__link">
+                                    <img
+                                        src="./assets/img/service-01.png"
+                                        alt="Website Design"
+                                        class="services__image"
+                                    />
+                                </a>
 
-                            <div class="services__content">
-                                <h3 class="services__name">Branding</h3>
+                                <div class="services__content">
+                                    <h3 class="services__name">Branding</h3>
 
-                                <p class="services__description">
-                                    Create beautiful Agency website with
-                                    Boluethat converts more visitors than any
-                                    website.
-                                </p>
-                            </div>
-                        </article>
-                        <!-- Service 2 -->
-                        <article class="services__item">
-                            <a href="#service-1" class="services__link">
-                                <img
-                                    src="./assets/img/service-02.png"
-                                    alt="Website Design"
-                                    class="services__image"
-                                />
-                            </a>
+                                    <p class="services__description">
+                                        Create beautiful Agency website with
+                                        Boluethat converts more visitors than
+                                        any website.
+                                    </p>
+                                </div>
+                            </article>
+                            <!-- Service 2 -->
+                            <article class="services__item">
+                                <a href="#service-1" class="services__link">
+                                    <img
+                                        src="./assets/img/service-02.png"
+                                        alt="Website Design"
+                                        class="services__image"
+                                    />
+                                </a>
 
-                            <div class="services__content">
-                                <h3 class="services__name">Web Design</h3>
+                                <div class="services__content">
+                                    <h3 class="services__name">Web Design</h3>
 
-                                <p class="services__description">
-                                    Create beautiful Agency website with
-                                    Boluethat converts more visitors than any
-                                    website.
-                                </p>
-                            </div>
-                        </article>
-                        <!-- Service 3 -->
-                        <article class="services__item">
-                            <a href="#service-1" class="services__link">
-                                <img
-                                    src="./assets/img/service-03.png"
-                                    alt="Website Design"
-                                    class="services__image"
-                                />
-                            </a>
+                                    <p class="services__description">
+                                        Create beautiful Agency website with
+                                        Boluethat converts more visitors than
+                                        any website.
+                                    </p>
+                                </div>
+                            </article>
+                            <!-- Service 3 -->
+                            <article class="services__item">
+                                <a href="#service-1" class="services__link">
+                                    <img
+                                        src="./assets/img/service-03.png"
+                                        alt="Website Design"
+                                        class="services__image"
+                                    />
+                                </a>
 
-                            <div class="services__content">
-                                <h3 class="services__name">Graphic Design</h3>
+                                <div class="services__content">
+                                    <h3 class="services__name">
+                                        Graphic Design
+                                    </h3>
 
-                                <p class="services__description">
-                                    Create beautiful Agency website with
-                                    Boluethat converts more visitors than any
-                                    website.
-                                </p>
-                            </div>
-                        </article>
+                                    <p class="services__description">
+                                        Create beautiful Agency website with
+                                        Boluethat converts more visitors than
+                                        any website.
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="services__list-navigation">
+                            <button
+                                type="button"
+                                class="services__list-nav-btn services__list-nav-btn--prev"
+                                aria-label="Previous services"
+                            >
+                                <svg
+                                    width="5"
+                                    height="9"
+                                    viewBox="0 0 5 9"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="services__list-nav-icon"
+                                >
+                                    <path
+                                        d="M0.5 4.73529H0.614824M0.614824 4.73529L4.5 0.5M0.614824 4.73529L4.5 8.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke="#143C3C"
+                                    />
+                                </svg>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="services__list-nav-btn services__list-nav-btn--next"
+                                aria-label="Next services"
+                            >
+                                <svg
+                                    width="5"
+                                    height="9"
+                                    viewBox="0 0 5 9"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="services__list-nav-icon"
+                                >
+                                    <path
+                                        d="M4.5 4.73529H4.38518M4.38518 4.73529L0.5 0.5M4.38518 4.73529L0.5 8.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke="currentColor"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
